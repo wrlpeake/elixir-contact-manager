@@ -140,11 +140,9 @@ defmodule ContactManager do
     for x <- list, do: IO.write("Name: #{x.name}, Age: #{x.age}\n")
   end
 
-  def call do
+  def start do
     IO.puts("Welcome to the Contact Manager")
     printOptions()
     options([])
   end
 end
-
-ContactManager.call()
