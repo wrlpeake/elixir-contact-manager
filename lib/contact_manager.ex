@@ -146,5 +146,3 @@ defmodule ContactManager do
     options([])
   end
 end
-
-ContactManager.call()
