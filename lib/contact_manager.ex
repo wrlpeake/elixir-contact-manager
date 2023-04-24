@@ -108,8 +108,8 @@ defmodule ContactManager do
   def options(list) do
     option = String.trim(IO.gets("Please select an option [1, 2, 3, 4, 5, 6, 7, 8, 9]: "))
 
-    if (Integer.parse(option) |> elem(0)) in 1..10 === false,
-      do: (IO.puts("Incorrect selection, choose again."); options(list))
+    if (Integer.parse(option) |> elem(0)) in 1..9 === false,
+       do: (IO.puts("Incorrect selection, choose again."); options(list))
 
     case option do
       "1" ->
