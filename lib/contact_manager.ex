@@ -101,25 +101,41 @@ defmodule ContactManager do
     options(users)
   end
 
+  def closeApp() do
+    IO.puts("Shutting down. Thank you for using the Contact Manager.")
+  end
+
   def options(list) do
-    option = String.trim(IO.gets("Please select an option [1, 2, 3, 4, 5, 6, 7, 8]: "))
+    option = String.trim(IO.gets("Please select an option [1, 2, 3, 4, 5, 6, 7, 8, 9]: "))
+    if ((Integer.parse(option) |> elem(0)) in 1..10) === false, do: IO.puts("Incorrect selection, choose again.") + options(list)
+
     case option do
-     "1" ->
+      "1" ->
         addUserOption(list)
-    "2" ->
+
+      "2" ->
         removeUserOption(list)
-    "3" ->
+
+      "3" ->
         incrementAgeOption(list)
-    "4" ->
+
+      "4" ->
         incrementAllAgesOption(list)
-    "5" ->
+
+      "5" ->
         sortByNameAscendingOption(list)
-    "6" ->
+
+      "6" ->
         sortByNameDescendingOption(list)
-    "7" ->
+
+      "7" ->
         sortByAgeAscendingOption(list)
-    "8" ->
+
+      "8" ->
         sortByAgeDescendingOption(list)
+
+      "9" ->
+        closeApp()
     end
   end
 
@@ -132,7 +148,8 @@ defmodule ContactManager do
     IO.puts("5. Sort all users by name, ascending")
     IO.puts("6. Sort all users by name, descending")
     IO.puts("7. Sort all users by age, ascending")
-    IO.puts("8. Sort all users by age, descending\n")
+    IO.puts("8. Sort all users by age, descending")
+    IO.puts("9. Close application\n")
   end
 
   def printUserList(list) do

@@ -92,6 +92,23 @@ defmodule ContactManagerTest do
              ]
   end
 
-  test "upon start, get new user name and age and store in a list" do
+  test "add multiple users, then sort by name descending, then remove all users" do
+    threeUsers =
+      ContactManager.addUser([], "David", 17)
+      |> ContactManager.addUser("Samson", 25)
+      |> ContactManager.addUser("Goliath", 32)
+
+    assert ContactManager.sortUsersByName(threeUsers, :desc) === [
+             %User{name: "Samson", age: 25},
+             %User{name: "Goliath", age: 32},
+             %User{name: "David", age: 17}
+           ]
+
+    noUsers =
+      ContactManager.removeUser(threeUsers, "Goliath")
+      |> ContactManager.removeUser("David")
+      |> ContactManager.removeUser("Samson")
+
+    assert noUsers === []
   end
 end
