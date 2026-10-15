@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: erlef/setup-beam@v1
         with:
-          otp-version: '25.x'
+          otp-version: '29.1.2'
           elixir-version: '1.14.x'
       - run: mix deps.get
       - run: mix test
